@@ -167,6 +167,13 @@ class GeneratorPage extends StatelessWidget {
                 child: Text('Next'),
               ),
             ],
+          Text('A random AWESOME idea:'),
+          Text(appState.current.asCamelCase),
+          ElevatedButton(
+            onPressed: () {
+              appState.getNext();
+            },
+            child: Text('Next one'),
           ),
         ],
       ),
