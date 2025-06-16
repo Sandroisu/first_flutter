@@ -110,23 +110,24 @@ class FavoritesPage extends StatelessWidget {
     var favorites = appState.favorites;
     if (favorites.isEmpty) {
       return Center(child: Text('No favorites yet.'));
+    } else {
+      return ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Text(
+              'You have '
+                  '${appState.favorites.length} favorites:',
+            ),
+          ),
+          for (var pair in appState.favorites)
+            ListTile(
+              leading: Icon(Icons.favorite),
+              title: Text(pair.asLowerCase),
+            ),
+        ],
+      );
     }
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text(
-            'You have '
-            '${appState.favorites.length} favorites:',
-          ),
-        ),
-        for (var pair in appState.favorites)
-          ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text(pair.asLowerCase),
-          ),
-      ],
-    );
   }
 }
 
@@ -167,6 +168,7 @@ class GeneratorPage extends StatelessWidget {
                 child: Text('Next'),
               ),
             ],
+          ),
           Text('A random AWESOME idea:'),
           Text(appState.current.asCamelCase),
           ElevatedButton(
