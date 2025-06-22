@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
-        title: 'Namer App',
+        title: 'Random Word App',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         ),
@@ -109,7 +109,7 @@ class FavoritesPage extends StatelessWidget {
     var appState = context.watch<MyAppState>();
     var favorites = appState.favorites;
     if (favorites.isEmpty) {
-      return Center(child: Text('No favorites yet.'));
+      return Center(child: Text('No favorites yet'));
     } else {
       return ListView(
         children: [
@@ -123,7 +123,7 @@ class FavoritesPage extends StatelessWidget {
           for (var pair in appState.favorites)
             ListTile(
               leading: Icon(Icons.favorite),
-              title: Text(pair.asLowerCase),
+              title: Text(pair.asCamelCase),
             ),
         ],
       );
